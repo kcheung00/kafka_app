@@ -14,8 +14,6 @@ import java.util.concurrent.ExecutionException;
 @Component
 public class SendMessageTask {
     private final Logger logger = LoggerFactory.getLogger(SendMessageTask.class);
-
-
     private final Producer producer;
 
     public SendMessageTask(Producer producer) {
@@ -29,8 +27,10 @@ public class SendMessageTask {
         ListenableFuture<SendResult<String, String>> listenableFuture = this.producer.sendMessage("INPUT_DATA", "IN_KEY", LocalDate.now().toString());
 
         SendResult<String, String> result = listenableFuture.get();
-        logger.info(String.format("Produced:\ntopic: %s\noffset: %d\npartition: %d\nvalue size: %d", result.getRecordMetadata().topic(),
+        logger.info(String.format("Produced:\ntopic: %s\noffset: %d\npartition: %d\nvalue size: %d", 
+                result.getRecordMetadata().topic(),
                 result.getRecordMetadata().offset(),
-                result.getRecordMetadata().partition(), result.getRecordMetadata().serializedValueSize()));
-    }
-}
+                result.getRecordMetadata().partition(), 
+                result.getRecordMetadata().serializedValueSize()));
+    }//end of send
+}//end of class - SendMessageTask
