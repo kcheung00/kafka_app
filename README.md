@@ -17,7 +17,7 @@ Simple Spring Boot App to publish & consume messages with docker compose config 
    ```
 4. Start the Kafka / Zookeeper container (cd kafka_image)
    ```sh
-   docker-compose -f docker-compose.yml -d
+   docker-compose -f docker-compose.yml up -d
    ```
 5. Build the App (cd kafka_app)
    ```sh
